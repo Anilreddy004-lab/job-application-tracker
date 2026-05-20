@@ -17,7 +17,7 @@ function App() {
   // Fetch all jobs
   const fetchJobs = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/jobs/");
+      const res = await axios.get("https://job-application-tracker-usfn.vercel.app/api/jobs/");
       setJobs(res.data);
     } catch (error) {
       console.error(error);
@@ -35,7 +35,7 @@ function App() {
     try {
       if (editingId !== null) {
         await axios.put(
-          `http://127.0.0.1:8000/api/jobs/${editingId}/`,
+          `https://job-application-tracker-usfn.vercel.app/api/jobs/${editingId}`,
           {
             company: form.company,
             role: form.role,
@@ -47,7 +47,7 @@ function App() {
 
         setEditingId(null);
       } else {
-        await axios.post("http://127.0.0.1:8000/api/jobs/", form);
+        await axios.post("https://job-application-tracker-usfn.vercel.app/api/jobs/", form);
       }
 
       setForm({
@@ -67,7 +67,7 @@ function App() {
   // Delete Job
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/jobs/${id}/`);
+      await axios.delete(`https://job-application-tracker-usfn.vercel.app/api/jobs/${id}`);
       fetchJobs();
     } catch (error) {
       console.error(error);
